@@ -56,7 +56,7 @@ bool sendSignal(string command, int& x, int& y, int& stepNum, set<pair<int,int>>
         exit(1);
     }
     if(targets.find({x,y}) != targets.end()) {
-        printf("%-10d %-10d %-10d %-10d %-10.2f",
+        printf("%-10d %-10d %-10d %-10d %-10.2f\n",
             x,y,x*y,stepNum,stepNum*1.0/(x*y));
         targets.erase({x,y});
     }
@@ -65,7 +65,7 @@ bool sendSignal(string command, int& x, int& y, int& stepNum, set<pair<int,int>>
 int main() {
     int x = 1, y = 1, stepNum = 0, s = 1;
     set<pair<int,int>> targets = create_targets();
-    printf("%-10s %-10s %-10s %-10s %-10s",
+    printf("%-10s %-10s %-10s %-10s %-10s\n",
         "x","y","Area","Steps","S/A Ratio");
     //524288 = 2^19
     while(s <= 524288) {
