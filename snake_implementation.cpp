@@ -43,12 +43,22 @@ int main() {
             while(y>1) {
                 //check if snake is at leftmost green cell in row
                 if(x==1 || (x-1)*y <= s) {
-                    //find the rightmost cell such that the cell under is green
+                    //find the rightmost cell such that the cell under is green, if y!= 2
+                    //Otherwise find the leftmost
                     int target = x;
-                    for(;;target++) {
-                        if(target*(y-1) > 2*s) {
-                            target--;
-                            break;
+                    if(y!=2) {
+                        for(;;target++) {
+                            if(target*(y-1) > 2*s) {
+                                target--;
+                                break;
+                            }
+                        }
+                    }
+                    else {
+                        for(;;target++) {
+                            if(target*(y-1) <= 2*s && target*(y-1)>s) {
+                                break;
+                            }
                         }
                     }
                     //go to the target
@@ -102,12 +112,22 @@ int main() {
             while(x>1) {
                 //check if snake is at the lowest green cell in a column
                 if(y==1 || x*(y-1) <= s) {
-                    //find the highest cell such that the cell to the left is green
+                    //find the highest cell such that the cell to the left is green, if x != 2.
+                    //Otherwise find the lowest one.
                     int target = y;
-                    for(;;target++) {
-                        if(target*(x-1) > 2*s) {
-                            target--;
-                            break;
+                    if(x!=2) {
+                        for(;;target++) {
+                            if(target*(x-1) > 2*s) {
+                                target--;
+                                break;
+                            }
+                        }
+                    }
+                    else {
+                        for(;;target++) {
+                            if(target*(x-1) <= 2*s && target*(x-1)>s) {
+                                break;
+                            }
                         }
                     }
                     //go to the target
